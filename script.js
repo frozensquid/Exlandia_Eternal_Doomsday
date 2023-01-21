@@ -57,15 +57,27 @@ content=getRemote();
 console.log(content);
 */
 
+ // "Nom compétence":[['Categorie1','Categorie2],'Mini description','Full description','Mods utilisés','Prérequis',[[10,'Desc points'],[15,'explication'],[20,'']]]
+
  var content={
- "Gadget proteiforme":[
- ['Combat','Utilitaire','Récolte','Transport','Technologie'],
- '→ Actuellement l\'item le plus cher du modpack...',
- 'Cette compétence vous permet d\'utiliser un outil polyvalent créé par le mékanicien. Grâce à des modules, ce gadget peut infliger de lourds dégâts, être efficace à la récolte (comme le minage) ou encore vous permettre de vous téléporter. <b>GRATUIT SI VOUS AVEZ MAÎTRE D\'ARMES TIER 4 ET OUVRIER TIER 4</b>',
- 'Mekanism (https://www.curseforge.com/minecraft/mc-mods/mekanism)',
- 'Aucune',
- [[50,'']]],
-   "Crochet dextension":[['Combat',"Récolte", "Technologie","Utilitaire"],'→ VOUS SOUHAITEZ AGRANDIR LA TAILLE DE VOTRE ... euh... portée ?','Cette compétence vous permet d\'utiliser un bras mécanique vous octroyant plus de portée afin de frapper plus loin ou encore poser des blocs éloignés.','Create (https://www.curseforge.com/minecraft/mc-mods/create)','Aucune',[[10,'']]],
+"Gadget proteiforme":
+ [
+	 ['Combat','Utilitaire','Récolte','Transport','Technologie'],
+	 '→ Actuellement l\'item le plus cher du modpack...',
+	 'Cette compétence vous permet d\'utiliser un outil polyvalent créé par le mékanicien. Grâce à des modules, ce gadget peut infliger de lourds dégâts, être efficace à la récolte (comme le minage) ou encore vous permettre de vous téléporter. <b>GRATUIT SI VOUS AVEZ MAÎTRE D\'ARMES TIER 4 ET OUVRIER TIER 4</b>',
+	 'Mekanism (https://www.curseforge.com/minecraft/mc-mods/mekanism)',
+	 'Aucune',
+	 [[50,'']]
+ ],
+"Crochet dextension":
+   [
+	   ['Combat',"Récolte", "Technologie","Utilitaire"],
+	   '→ VOUS SOUHAITEZ AGRANDIR LA TAILLE DE VOTRE ... euh... portée ?',
+	   'Cette compétence vous permet d\'utiliser un bras mécanique vous octroyant plus de portée afin de frapper plus loin ou encore poser des blocs éloignés.',
+	   'Create (https://www.curseforge.com/minecraft/mc-mods/create)',
+	   'Aucune',
+	   [[10,'']]
+   ],
    "Docteur":[["Production","Support"],"→ Quoi d'neuf ?","Cette compétence vous permet de créer des bandages, trousses de soin et pommades permettant de soigner en partie vos alliés.",'Rough Tweaks (https://www.curseforge.com/minecraft/mc-mods/rough-tweaks)','Aucune',[[5,'']]],
  "Seigneur des cordes":[["Combat","Vanilla"],"→ Vous avez plus d'un tour dans votre ar... Euh plus d'une corde à votre sac... Enfin vous avez compris...","Cette compétence vous octroie la maîtrise des arcs, arbalètes, frondes et autres objets de lancer (selon le tier choisi).<b>Attention, vous savez manier ce type d'armes mais pas les confectionner. Il vous faut être ou commercer avec un taillandier pour cela.</b>",'Silent Gear (https://www.curseforge.com/minecraft/mc-mods/silent-gear)<br>Upgraded Netherite (https://www.curseforge.com/minecraft/mc-mods/upgraded-netherite)','Vous êtes dépendant du Taillandier',[[10,"Maîtrise jusqu'au fer (non-inclus)"],[15,"Maîtrise jusqu'au diamant (non-inclus)"],[20,"Maîtrise jusqu'à la netherite (non-inclus)"],[35,"Maîtrise jusqu'à la netherite ou plus"]]],
   "Maître darmes":[["Combat","Vanilla"],"→ JE NE MANGE PAS DE GRAINES !!","Cette compétence vous octroie la maîtrise des armes au corps à corps (selon le tier choisi). Attention, vous savez manier ce type d'armes mais pas les confectionner. Il vous faut être ou commercer avec un taillandier pour cela.",'Silent Gear (https://www.curseforge.com/minecraft/mc-mods/silent-gear)<br>Upgraded Netherite (https://www.curseforge.com/minecraft/mc-mods/upgraded-netherite)','Vous êtes dépendant du Taillandier',[[10,"Maîtrise jusqu'au fer (non-inclus)"],[15,"Maîtrise jusqu'au diamant (non-inclus)"],[20,"Maîtrise jusqu'à la netherite (non-inclus)"],[35,"Maîtrise jusqu'à la netherite ou plus"]]],
@@ -116,7 +128,6 @@ console.log(content);
 "Chef cuisinier":[["Vanilla","Production"],"→ Vous êtes un peu le Philippe Etchebest de la colonie, mais en plus sympa.","Véritable cordon bleu, vous êtes seul détenteur d'un savoir ancestral culinaire vous permettant de faire toutes les recettes disponibles dans ce monde. Chaque équipe devra compter sur vous afin de s'alimenter surtout sur une île aussi hostile que celle sur laquelle vous allez atterrir. Vous savez utiliser le couteau de silex.",'Farmer\'s Delight (https://www.curseforge.com/minecraft/mc-mods/farmers-delight)<br>Tous les add-ons Delight','Vous êtes dépendant du Fermier',[[20,""]]],
  };
  console.log(typeof content)
- // "Nom compétence":[['Categorie1','Categorie2],'Mini description','Full description','Mods utilisés','Prérequis',[[10,'Desc points'],[15,''],[20,'']]]
 
  $.each( content,function (value, i) {
  var img_ht=""
