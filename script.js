@@ -1,4 +1,63 @@
-var content={
+var icons={
+'Magie':'https://cdn-icons-png.flaticon.com/512/3204/3204021.png',
+'Combat':'https://cdn-icons-png.flaticon.com/512/4949/4949538.png',
+'Technologie':'https://cdn-icons-png.flaticon.com/512/1087/1087815.png',
+'Automatisation':'https://cdn-icons-png.flaticon.com/512/1037/1037503.png',
+'Récolte':'https://cdn-icons-png.flaticon.com/512/4310/4310767.png',
+'Production':'https://cdn-icons-png.flaticon.com/512/415/415733.png',
+'Vanilla':'https://cdn-icons-png.flaticon.com/512/1006/1006555.png',
+'Support':'https://cdn-icons-png.flaticon.com/512/3426/3426082.png',
+'Utilitaire':'https://cdn-icons-png.flaticon.com/512/1422/1422254.png',
+'Transport':'https://cdn-icons-png.flaticon.com/512/2742/2742687.png',
+'Défense':'https://cdn-icons-png.flaticon.com/512/4438/4438696.png',
+};
+
+ $.each( icons,function (value, i) {
+ $("#legend").append('<div class="col-sm-1 "></div><div class="col-sm-3 mt-1" style="border:1px solid black" id="legend_'+value+'" onclick="filter(\''+value+'\')"><p class="card-text text-center">'+value+' <img src="'+i+'" title="'+value+'" style="width:30px;"/></p></div>');
+ 
+ });
+function set_icons(name_type){
+return icons[name_type];
+}
+var filter_arr =[]
+function filter(name){
+	if($("#legend_"+name).hasClass("sign_card_choose")){
+		$("#legend_"+name).removeClass("sign_card_choose")
+		filter_arr.splice(filter_arr.indexOf(name),1);
+	}else{
+		$("#legend_"+name).addClass("sign_card_choose")
+		filter_arr.push(name)
+	}
+	
+	$('.competence').each(function() {	$(this).show();	}); //on affiche tout par défaut
+
+	$.each(filter_arr, function( index, value ) {//on cache par rapport aux filtres
+		$('.competence').each(function() {
+		if($(this).hasClass(value) ){
+		} else {
+			$(this).hide("slow");
+		}
+		});
+	});
+	
+console.log(filter_arr)
+}
+/*
+function getRemote() {
+    c = $.ajax({
+        type: "GET",
+        url: "https://raw.githubusercontent.com/frozensquid/Exlandia_Eternal_Doomsday/main/competences.js",
+        async: false
+    }).responseText;
+	return c
+	
+}
+
+content=getRemote();
+console.log(content);
+*/
+
+ var content={
  "Gadget proteiforme":[['Combat','Utilitaire','Récolte','Transport','Technologie'],'→ Actuellement l\'item le plus cher du modpack...','Cette compétence vous permet d\'utiliser un outil polyvalent créé par le mékanicien. Grâce à des modules, ce gadget peut infliger de lourds dégâts, être efficace à la récolte (comme le minage) ou encore vous permettre de vous téléporter. <b>GRATUIT SI VOUS AVEZ MAÎTRE D\'ARMES TIER 4 ET OUVRIER TIER 4</b>','Mekanism (https://www.curseforge.com/minecraft/mc-mods/mekanism)','Aucune',[[50,'']]],
   "Crochet dextension":[['Combat',"Récolte", "Technologie","Utilitaire"],'→ VOUS SOUHAITEZ AGRANDIR LA TAILLE DE VOTRE ... euh... portée ?','Cette compétence vous permet d\'utiliser un bras mécanique vous octroyant plus de portée afin de frapper plus loin ou encore poser des blocs éloignés.','Create (https://www.curseforge.com/minecraft/mc-mods/create)','Aucune',[[10,'']]],
    "Docteur":[["Production","Support"],"→ Quoi d'neuf ?","Cette compétence vous permet de créer des bandages, trousses de soin et pommades permettant de soigner en partie vos alliés.",'Rough Tweaks (https://www.curseforge.com/minecraft/mc-mods/rough-tweaks)','Aucune',[[5,'']]],
@@ -21,12 +80,11 @@ var content={
 "Fabricant darmes à feu":[["Production"],"→ Vous avez les compétences, eux, ils ont soif de sang.","Cette compétence vous permet de fabriquer toutes les armes à feu ainsi que les munitions et grenades en passant par un établi particulier.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)<br>Immersive Engineering (https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)','aucune',[[20,""]]],
 "Defourailleur":[["Combat"],"→ Ce n’est pas le titre d’un sketch de Bigard.","Cette compétence vous permet de manier les armes lourdes. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)<br>Immersive Engineering (https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)','Vous êtes dépendant du Fabricant d\'armes à feu',[[30,""]]],
 "Cracheur de shrapnel":[["Combat"],"→ Va falloir mettre des cartouches autre part que dans Jaqueline.","Cette compétence vous permet de manier les fusils à pompe. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','Vous êtes dépendant du Fabricant d`\'armes à feu',[[30,""]]],
-"Tireur d'elite":[["Combat"],"→ S'agirait de savoir viser.","Cette compétence vous permet de manier les fusils de précision. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','Vous êtes dépendant du Fabricant d\'armes à feu',[[25,""]]],
+"Tireur d elite":[["Combat"],"→ S'agirait de savoir viser.","Cette compétence vous permet de manier les fusils de précision. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','Vous êtes dépendant du Fabricant d\'armes à feu',[[25,""]]],
 "Gros calibre":[["Combat"],"→ Léa passion Kalashnikov","Cette compétence vous permet de manier des fusils d'assaut. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','Vous êtes dépendant du Fabricant d\'armes à feu',[[25,""]]],
 "Petit calibre":[["Combat"],"→ RATATATATATA","Cette compétence vous permet de manier des SMGs. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','Vous êtes dépendant du Fabricant d\'armes à feu',[[20,""]]],
 "Pistolero":[["Combat"],"→ Pas la peine de chercher, vous ne tirerez jamais plus vite que votre ombre.","Cette compétence vous permet de manier des armes de poing. Attention, vous savez les manier mais pas les confectionner. Il vous faut être ou commercer avec un fabricant d'armes à feu pour cela.",'Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)<br>Immersive Engineering (https://www.curseforge.com/minecraft/mc-mods/immersive-engineering)','Vous êtes dépendant du Fabricant d\'armes à feu',[[15,""]]],
-"Artificier":[["Combat","Défense","Production"],"→ Le meilleur ami des Creepers.","Cette compétence vous permet la création de mécanismes, engins ou armes explosives ainsi que leur utilisation.",'Security Craft (https://www.curseforge.com/minecraft/mc-mods/security-craft)<br>Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','aucune',[[15,""]]],
-"Orfèvre":[["Production","Vanilla"],"→ On vous voit avec vos contrefaçons de Rolex, mais on ne juge pas.","Cette compétence vous donne l’accès aux recettes des appareils de mesure (comme l’horloge, la boussole ou encore le thermomètre) ainsi qu’aux recettes de bijoux (anneaux, bracelets, pendentifs).",'Aucun','aucune',[[10,""]]],
+"Artificier":[["Combat","Défense","Production"],"→ Le meilleur ami des Creepers.","Cette compétence vous permet la création de mécanismes, engins ou armes explosives ainsi que leur utilisation.",'Security Craft (https://www.curseforge.com/minecraft/mc-mods/security-craft)<br>Timeless and Classic Guns (https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns)','aucune',[[15,""]]],"Orfèvre":[["Production","Vanilla"],"→ On vous voit avec vos contrefaçons de Rolex, mais on ne juge pas.","Cette compétence vous donne l’accès aux recettes des appareils de mesure (comme l’horloge, la boussole ou encore le thermomètre) ainsi qu’aux recettes de bijoux (anneaux, bracelets, pendentifs).",'Aucun','aucune',[[10,""]]],
 "Raffineur":[["Production","Utilitaire"],"→ Raffineur peut-être, mais certainement pas raffiné.","Cette compétence permet l’amélioration des armes, armures et outils en augmentant leurs statistiques.",'Silent Gear (https://www.curseforge.com/minecraft/mc-mods/silent-gear)<br>Anointed Items (https://www.curseforge.com/minecraft/mc-mods/anointed-items)','aucune',[[15,""]]],
 "Armurier":[["Production","Vanilla"],"→ La Cristina Cordula des chevaliers.","Vous êtes capable de forger n'importe quelle armure mais pas de la porter. Vous avez accès à l'enclume.",'Silent Gear (https://www.curseforge.com/minecraft/mc-mods/silent-gear)<br>Upgraded Netherite (https://www.curseforge.com/minecraft/mc-mods/upgraded-netherite)','aucune',[[15,""]]],
 "Ferronnier":[["Production","Vanilla"],"→ Les bouseux vous remercient.","Vous êtes capable de forger n'importe quel outil non-magique mais pas de le manier. Vous avez accès à l'enclume.",'Silent Gear (https://www.curseforge.com/minecraft/mc-mods/silent-gear)<br>Upgraded Netherite (https://www.curseforge.com/minecraft/mc-mods/upgraded-netherite)','aucune',[[15,""]]],
@@ -51,4 +109,95 @@ var content={
 "Fermier":[["Production","Vanilla"],"→ Avec vous c'est l'Amour est dans le Pré, mais sans l'amour.","Vous êtes responsable de l'agriculture et de l'élevage. Cette compétence vous permet de nourrir les animaux afin qu'ils se reproduisent ainsi que de planter toutes les graines présentes dans le jeu. Vous avez accès à la houe en bois.",'Genetic Animals (https://www.curseforge.com/minecraft/mc-mods/genetic-animals)','aucune',[[25,""]]],
 "Chef cuisinier":[["Vanilla","Production"],"→ Vous êtes un peu le Philippe Etchebest de la colonie, mais en plus sympa.","Véritable cordon bleu, vous êtes seul détenteur d'un savoir ancestral culinaire vous permettant de faire toutes les recettes disponibles dans ce monde. Chaque équipe devra compter sur vous afin de s'alimenter surtout sur une île aussi hostile que celle sur laquelle vous allez atterrir. Vous savez utiliser le couteau de silex.",'Farmer\'s Delight (https://www.curseforge.com/minecraft/mc-mods/farmers-delight)<br>Tous les add-ons Delight','Vous êtes dépendant du Fermier',[[20,""]]],
  };
- console.log(content)
+ console.log(typeof content)
+ // "Nom compétence":[['Categorie1','Categorie2],'Mini description','Full description','Mods utilisés','Prérequis',[[10,'Desc points'],[15,''],[20,'']]]
+
+ $.each( content,function (value, i) {
+ var img_ht=""
+ var class_cpt=""
+ $.each( i[0],function (v, k) {
+ img_ht=img_ht+'<img src="'+set_icons(k)+'" title="'+k+'" style="width:30px">'
+ class_cpt=class_cpt+" "+k
+ });
+ value_s=value.replace(/ /g, '_')
+    $("#all_cptc").append('<div class="card col-sm-3 me-1 mt-1 ms-1 text-center competence sign_card '+class_cpt+'" style="cursor:pointer"  > <p class="card-text " > <div class="row" style="padding-right:15px;" id="'+value_s+'"> <div class="col-sm-8 " >'+
+	'<span class="competence_name">'+value+'</span> <br>'+img_ht+' </div> <div class="col-sm-4 noclick" style="border:1px solid black;" >'+
+	'<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5e/Experience_Orb_Value_149-306.png" style="width:20px;"/> '+
+	'<span id="actual_level_'+value.replace(/ /g, '_')+'">0</span> / '+i[5].length+' <br> <i class="fa fa-angle-up" aria-hidden="true" style="cursor:pointer" onclick="add_remove(\''+value.replace(/ /g, '_')+'\',\'up\')"></i>'+
+	'<i class="fa fa-angle-down" aria-hidden="true" style="cursor:pointer" onclick="add_remove(\''+value+'\',\'down\')"></i> </div> </div> </p> </div>')
+});
+
+//var new_count=100;
+var choosen=[]
+
+function add_remove(name,action){
+	var new_count=parseInt($("#points_restant").html())
+	var actual_level=parseInt($('#actual_level_'+name.replace(/ /g, '_')).html());
+	var cout=content[name.replace(/_/g, ' ')][5][0][0];
+	var max_level=content[name.replace(/_/g, ' ')][5].length
+	if(action == "up") {
+		new_level=actual_level+1
+		if(new_level <= max_level){
+			new_count=new_count-parseInt(content[name.replace(/_/g, ' ')][5][actual_level][0]);
+		} else { alert('niveau max atteint');return}
+	} else { //Si on enléve un niveau à la compétence
+		new_level=actual_level-1
+		if(new_level >= 0){
+		
+
+			new_count=new_count+parseInt(content[name.replace(/_/g,' ')][5][parseInt(new_level)][0]);
+		} else {
+			alert('niveau min atteint');return;
+		}
+	}
+
+	console.log("new level : "+new_level)
+	console.log("new count  : "+new_count)
+	
+	if(new_count < 0){
+		alert('Pas assez de points ('+new_count+') ou deja pris'); return;
+	}
+	$('#all_choose').html(" ")
+		if(new_level > 0){
+			console.log(name)
+			$("#"+name).parent().addClass("sign_card_choose")
+		}
+		if(new_level == 0){
+			console.log(name.replace(/ /g, '_'))
+			$("#"+name.replace(/ /g, '_')).parent().removeClass("sign_card_choose")
+		}
+		
+	//Si on arrive la c'est qu'on est bon :)
+	$("#points_restant").html(new_count)
+	$('#actual_level_'+name.replace(/ /g, '_')).html(new_level)
+
+	choosen[name]=new_level
+	
+for (const [key, value] of Object.entries(choosen)) {
+	if(new_level > 0)$('#all_choose').append(""+key.replace(/_/g, ' ')+" : NV"+value+"<br>")
+	}
+
+}
+
+
+$( ".competence" ).click(function() {
+
+
+ $("#card_desc_global").hide();
+ $("#card_desc_global").show( "slow" );
+  var name=$(".competence_name",this).html()
+  $("#card-title_cpt").html(name)
+  $("#type_cptc").html( content[name][0].join(", "))
+  $("#minidesc").html( content[name][1])
+  $("#description_cptc").html( content[name][2])
+  $("#mods").html( content[name][3])
+  $("#fonctionneavec").html( content[name][4])
+  $("#couts").html(" ")
+   content[name][5].forEach(function (value, i) {
+		nv=i+1;
+		$("#couts").append('nv'+nv+' : '+ value[0]+"Pts ("+value[1]+")<br>");
+	});
+$('#exampleModal').modal('toggle')
+});
+
+$( ".noclick" ).click(function() {return false;});
