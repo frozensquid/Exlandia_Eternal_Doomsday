@@ -180,7 +180,7 @@ for (const [key, value] of Object.entries(choosen)) {
 	if(new_level > 0){
 		$('#all_choose').append(""+key.replace(/_/g, ' ')+" : NV"+value+"<br>")
 		recap=$("#recap_competence").val()//
-		$("#recap_competence").val(recap+key.replace(/_/g, ' ')+" : NV"+value)
+		$("#recap_competence").val(choosen)
 
 	}
 	}
