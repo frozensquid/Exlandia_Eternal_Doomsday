@@ -191,7 +191,12 @@ function add_remove(name,action){
 	choosen[name]=new_level
 	
 for (const [key, value] of Object.entries(choosen)) {
-	if(new_level > 0)$('#all_choose').append(""+key.replace(/_/g, ' ')+" : NV"+value+"<br>")
+	if(new_level > 0){
+		$('#all_choose').append(""+key.replace(/_/g, ' ')+" : NV"+value+"<br>")
+		val recap=$("#recap_competence").val()
+		$("#recap_competence").val(recap+key.replace(/_/g, ' ')+" : NV"+value)
+
+	}
 	}
 
 }
