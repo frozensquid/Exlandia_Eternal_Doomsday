@@ -42,20 +42,6 @@ function filter(name){
 	
 console.log(filter_arr)
 }
-/*
-function getRemote() {
-    c = $.ajax({
-        type: "GET",
-        url: "https://raw.githubusercontent.com/frozensquid/Exlandia_Eternal_Doomsday/main/competences.js",
-        async: false
-    }).responseText;
-	return c
-	
-}
-
-content=getRemote();
-console.log(content);
-*/
 
  // "Nom compétence":[['Categorie1','Categorie2],'Mini description','Full description','Mods utilisés','Prérequis',[[10,'Desc points'],[15,'explication'],[20,'']]]
 
